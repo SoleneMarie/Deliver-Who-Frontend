@@ -1,6 +1,189 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.line {
+  width: 100%;
+  border-bottom: 1px solid #e9ebeb;
+  display: flex;
+  justify-content: center;
+}
+.band {
+  height: 60px;
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+}
+.logo {
+  height: 70%;
+}
+
+#flexheader {
+  display: flex;
+  padding: 30px 10px;
+  max-width: 1200px;
+  align-items: center;
+  justify-content: space-between;
+}
+.mainHeader {
+  margin-right: 40px;
+}
+h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 0.6rem;
+  margin-bottom: 2rem;
+}
+h1 + p {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  margin-top: 20px;
+  margin-bottom: 12px;
+  color: #868a8a;
+}
+
+#banner-pic {
+  height: 200px;
+  width: 350px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 5px;
+}
+/* -------------DEBUT DU MAIN --------------*/
+main {
+  background-color: #f3f5f5;
+  display: flex;
+  justify-content: center;
+  padding: 12px 10px;
+}
+.mainblock {
+  max-width: 1200px;
+  display: flex;
+}
+#allcategories {
+  flex: 1 1;
+  margin-right: 30px;
+}
+.oneCategory {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+  flex: 1 1;
+}
+
+.contentOnemeal {
+  width: 50%;
+  padding: 0 10px 25px 10px;
+  box-sizing: border-box;
+}
+.onemeal {
+  display: flex;
+  background-color: white;
+  padding: 16px;
+  height: 160px;
+  border-radius: 5%;
+  box-sizing: border-box;
+}
+.AllText {
+  margin-right: 8px;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+
+  font-weight: bold;
+  padding: 10px;
+}
+.oneCategory img {
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 5px;
+}
+
+h3 {
+  font-weight: 400;
+  font-size: 1.17rem;
+  max-height: 40%;
+  margin-bottom: 12px;
+  line-height: 1.4rem;
+}
+
+.overflowHidden {
+  height: 30%;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.overflowHidden p {
+  font-size: 0.9rem;
+  color: #868a8a;
+  line-height: 1.3rem;
+}
+
+.priceandpop {
+  display: flex;
+  gap: 20px;
+  margin-right: 12px;
+}
+
+.moyen {
+  font-size: 1.1rem;
+}
+.petit {
+  font-size: 0.8rem;
+  color: #ff8000;
+  font-weight: bold;
+}
+
+.pop {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.pop svg {
+  color: #ff8000;
+}
+
+/*--------------LE PANIER----------------*/
+.Panier {
+  width: 330px;
+  margin: 30px 0;
+  position: relative;
+}
+.boxshadow {
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 0 22px 24px 0 rgba(46, 51, 51, 0.07);
+  position: sticky;
+  top: 30px;
+}
+
+.buttonclass {
+  display: flex;
+  flex-direction: column;
+}
+
+.buttonclass button {
+  color: #8b9a9b;
+  background-color: #bac3c3;
+  border: none;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 10px;
+  font-size: 1rem;
+}
+
+.basket {
+  padding: 48px;
   text-align: center;
+  color: #868a8a;
 }
