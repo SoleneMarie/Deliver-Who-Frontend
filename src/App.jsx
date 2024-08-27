@@ -54,51 +54,53 @@ function App() {
             <div className="mainblock">
               <section id="allcategories">
                 {data.categories.map((elem, index) => {
-                  return (
-                    <>
-                      <h2 key={index}> {elem.name}</h2>
+                  if (elem.meals.length !== 0) {
+                    return (
+                      <>
+                        <h2 key={index}> {elem.name}</h2>
 
-                      <section className="oneCategory">
-                        {elem.meals.map((elemBis, index) => {
-                          return (
-                            <>
-                              <section className="contentOnemeal">
-                                <section className="onemeal">
-                                  <section className="AllText">
-                                    <h3 key="elem.id">{elemBis.title}</h3>
-                                    <div className="overflowHidden">
-                                      <p>{elemBis.description}</p>
-                                    </div>
-                                    <div className="priceandpop">
-                                      <span className="moyen">
-                                        {elemBis.price} €
-                                      </span>
-                                      {elemBis.popular && (
-                                        <div className="pop">
-                                          <div>
-                                            <FaStar />
+                        <section className="oneCategory">
+                          {elem.meals.map((elemBis, index) => {
+                            return (
+                              <>
+                                <section key={index} className="contentOnemeal">
+                                  <section className="onemeal">
+                                    <section className="AllText">
+                                      <h3 key="elem.id">{elemBis.title}</h3>
+                                      <div className="overflowHidden">
+                                        <p>{elemBis.description}</p>
+                                      </div>
+                                      <div className="priceandpop">
+                                        <span className="moyen">
+                                          {elemBis.price} €
+                                        </span>
+                                        {elemBis.popular && (
+                                          <div className="pop">
+                                            <div>
+                                              <FaStar />
+                                            </div>
+                                            <div>
+                                              <p className="petit">Populaire</p>
+                                            </div>
                                           </div>
-                                          <div>
-                                            <p className="petit">Populaire</p>
-                                          </div>
-                                        </div>
-                                      )}
-                                    </div>
+                                        )}
+                                      </div>
+                                    </section>
+                                    {elemBis.picture && (
+                                      <img
+                                        src={elemBis.picture}
+                                        alt={elemBis.title}
+                                      />
+                                    )}
                                   </section>
-                                  {elemBis.picture && (
-                                    <img
-                                      src={elemBis.picture}
-                                      alt={elemBis.title}
-                                    />
-                                  )}
                                 </section>
-                              </section>
-                            </>
-                          );
-                        })}
-                      </section>
-                    </>
-                  );
+                              </>
+                            );
+                          })}
+                        </section>
+                      </>
+                    );
+                  }
                 })}
               </section>
               <section className="Panier">
