@@ -7,6 +7,8 @@ import deliverooLogoComplet from "./pictures/SVG/logo-teal.svg";
 function App() {
   const [data, setData] = useState();
   const [isLoading, setisLoading] = useState(true);
+  const [isPicked, setIsPicked] = useState([]);
+  let [price, setPrice] = useState(0);
   useEffect(() => {
     const getData = async () => {
       try {
@@ -64,7 +66,24 @@ function App() {
                             return (
                               <>
                                 <section key={index} className="contentOnemeal">
-                                  <section className="onemeal">
+                                  {/*-------------------------------ONCLICK---------------------------- */}
+                                  <section
+                                    className="onemeal"
+                                    onClick={(event) => {
+                                      event.preventDefault;
+                                      const MealsArr = [...isPicked];
+                                      MealsArr.push({
+                                        key: elemBis.id,
+                                        title: elemBis.title,
+                                        price: elemBis.price,
+                                      });
+                                      setPrice(
+                                        (price += Number(elemBis.price))
+                                      );
+                                      setIsPicked(MealsArr);
+                                    }}
+                                  >
+                                    {console.log(isPicked)}
                                     <section className="AllText">
                                       <h3 key="elem.id">{elemBis.title}</h3>
                                       <div className="overflowHidden">
@@ -93,6 +112,7 @@ function App() {
                                       />
                                     )}
                                   </section>
+                                  {/*-------------------------------ONCLICK---------------------------- */}
                                 </section>
                               </>
                             );
@@ -103,13 +123,36 @@ function App() {
                   }
                 })}
               </section>
+
+              {/*--------------------------------PANIER---------------------------------*/}
               <section className="Panier">
                 <div className="boxshadow">
                   <div className="buttonclass">
                     <button>Valider mon panier</button>
                   </div>
                   <div className="basket">
-                    <span>Votre panier est vide</span>
+                    {isPicked.length !== 0 ? (
+                      isPicked.map((item) => {
+                        return (
+                          <>
+                            <section key={item.key} className="basket-line">
+                              <button>-</button>
+                              <span>1</span>
+                              <button>+</button>
+                              <span>{item.title}</span>
+                              <span>{item.price}</span>
+                            </section>
+                            <section className="total">
+                              <div className="sub-tot">
+                                <span>Sous-total</span> <span>{price}</span>
+                              </div>
+                            </section>
+                          </>
+                        );
+                      })
+                    ) : (
+                      <span>Votre panier est vide</span>
+                    )}
                   </div>
                 </div>
               </section>
