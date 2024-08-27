@@ -9,6 +9,8 @@ function App() {
   const [isLoading, setisLoading] = useState(true);
   const [isPicked, setIsPicked] = useState([]);
   let [price, setPrice] = useState(0);
+  let total1 = price + 2.5;
+  let total2 = price;
   useEffect(() => {
     const getData = async () => {
       try {
@@ -140,18 +142,38 @@ function App() {
                               <span>1</span>
                               <button>+</button>
                               <span>{item.title}</span>
-                              <span>{item.price}</span>
-                            </section>
-                            <section className="total">
-                              <div className="sub-tot">
-                                <span>Sous-total</span> <span>{price}</span>
-                              </div>
+                              <p>{item.price}</p>
                             </section>
                           </>
                         );
                       })
                     ) : (
                       <span>Votre panier est vide</span>
+                    )}
+                    {isPicked.length !== 0 && (
+                      <section className="total">
+                        <div className="sub-tot">
+                          <p>Sous-total</p> <p>{price} €</p>
+                          <p>Frais de livraison</p>
+                          {price >= 50 ? (
+                            <>
+                              <p>Offerts</p>{" "}
+                              <div className="finalTot">
+                                <p>Total</p>
+                                <p>{total2}</p>
+                              </div>
+                            </>
+                          ) : (
+                            <>
+                              <p>2,50 €</p>
+                              <div className="finalTot">
+                                <p>Total</p>
+                                <p>{total1}</p>
+                              </div>
+                            </>
+                          )}
+                        </div>
+                      </section>
                     )}
                   </div>
                 </div>
