@@ -8,9 +8,11 @@ function App() {
   const [data, setData] = useState();
   const [isLoading, setisLoading] = useState(true);
   const [isPicked, setIsPicked] = useState([]);
-  let [price, setPrice] = useState(0);
-  let total1 = price + 2.5;
-  let total2 = price;
+  const [plusminus, setPlusminus] = useState([]);
+  let [priceTot, setPrice] = useState(0);
+  let total1 = (priceTot + 2.5).toFixed(2);
+  let total2 = priceTot.toFixed(2);
+
   useEffect(() => {
     const getData = async () => {
       try {
@@ -19,14 +21,12 @@ function App() {
         );
         setData(response.data);
         setisLoading(false);
-        console.log(response.data);
       } catch (error) {
         console.log(error.reponse);
       }
     };
     getData();
   }, []);
-  console.log(data);
   return (
     <>
       {isLoading ? (
@@ -74,18 +74,22 @@ function App() {
                                     onClick={(event) => {
                                       event.preventDefault;
                                       const MealsArr = [...isPicked];
+
                                       MealsArr.push({
                                         key: elemBis.id,
                                         title: elemBis.title,
                                         price: elemBis.price,
                                       });
                                       setPrice(
-                                        (price += Number(elemBis.price))
+                                        (priceTot += Number(elemBis.price))
                                       );
                                       setIsPicked(MealsArr);
+
+                                      const Count = [...plusminus];
+                                      Count.push({ id: elemBis.id, number: 1 });
+                                      setPlusminus(Count);
                                     }}
                                   >
-                                    {console.log(isPicked)}
                                     <section className="AllText">
                                       <h3 key="elem.id">{elemBis.title}</h3>
                                       <div className="overflowHidden">
@@ -153,9 +157,9 @@ function App() {
                     {isPicked.length !== 0 && (
                       <section className="total">
                         <div className="sub-tot">
-                          <p>Sous-total</p> <p>{price} €</p>
+                          <p>Sous-total</p> <p>{priceTot.toFixed(2)} €</p>
                           <p>Frais de livraison</p>
-                          {price >= 50 ? (
+                          {priceTot >= 50 ? (
                             <>
                               <p>Offerts</p>{" "}
                               <div className="finalTot">
