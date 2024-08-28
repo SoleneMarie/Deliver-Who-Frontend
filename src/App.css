@@ -24,7 +24,14 @@ header {
 .logo {
   height: 70%;
 }
+.plusminus {
+  border: none;
+  background-color: white;
+}
 
+.icon {
+  font-size: 20px;
+}
 #flexheader {
   display: flex;
   padding: 30px 10px;
@@ -162,7 +169,7 @@ h3 {
 
 /*--------------LE PANIER----------------*/
 .Panier {
-  width: 330px;
+  width: 350px;
   margin: 30px 0;
   position: relative;
 }
@@ -179,18 +186,82 @@ h3 {
   flex-direction: column;
 }
 
-.buttonclass button {
+.greybut {
   color: #8b9a9b;
   background-color: #bac3c3;
   border: none;
   border-radius: 5px;
   padding: 20px;
   margin: 10px;
+  margin-bottom: 60px;
   font-size: 1rem;
 }
+.greenbut {
+  color: white;
+  background-color: #00ccbc;
+  border: none;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 10px;
+  font-size: 1rem;
+  margin-bottom: 30px;
+}
 
+.greenbut:hover {
+  cursor: pointer;
+}
 .basket {
-  padding: 48px;
+  padding: 0 16px 60px 16px;
   text-align: center;
   color: #868a8a;
+}
+
+.alllines {
+  padding-top: 0px;
+  padding-bottom: 10px;
+  border-bottom: solid 1px lightgray;
+}
+.basket-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  margin: 10px 0;
+  overflow: hidden;
+}
+.title {
+  margin-left: 6px;
+}
+
+.right {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.icon {
+  display: flex;
+  color: #00ccbc;
+  font-weight: bold;
+}
+.sub-tot {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  margin-left: 8px;
+  margin-top: 16px;
+}
+
+.deliverfee {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  margin-left: 8px;
+  padding: 5px 0;
+}
+
+.calcul {
+  margin-bottom: 16px;
+  border-bottom: solid 1px lightgray;
+  padding-bottom: 16px;
 }

@@ -127,3 +127,29 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
+/*
+
+  let idKey = plusminus[indexFind].id;
+                                        const idKeyPicked =isPicked.indexof (isPicked.find(
+                                          (element) => element.key === idKey
+                                        ));
+  <>
+    <section key={index} className="contentOnemeal">
+
+      <section
+        className="onemeal"
+        onClick={(event) => {
+          event.preventDefault;
+          const MealsArr = [...isPicked];
+          MealsArr.push({
+            key: elemBis.id,
+            title: elemBis.title,
+            price: elemBis.price,
+          });
+          setPrice(
+            (priceTot += Number(elemBis.price))
+          );
+          setIsPicked(MealsArr);
+        }}
+        */
