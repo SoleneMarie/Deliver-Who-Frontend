@@ -16,9 +16,7 @@ function App() {
   const [data, setData] = useState();
   const [isLoading, setisLoading] = useState(true);
   const [isPicked, setIsPicked] = useState([]);
-  const [plusminus, setPlusminus] = useState([]);
   const [buy, setBuy] = useState(false);
-  const [fees, setFees] = useState(true);
   let total1 = 0;
   isPicked.map((item) => (total1 += item.price * item.number));
 
@@ -111,27 +109,20 @@ function App() {
                                       event.preventDefault;
 
                                       if (
-                                        plusminus.find(
-                                          (element) => element.id === elemBis.id
+                                        isPicked.find(
+                                          (element) =>
+                                            element.key === elemBis.id
                                         )
                                       ) {
-                                        const indexFind = plusminus.indexOf(
-                                          plusminus.find(
-                                            (element) =>
-                                              element.id === elemBis.id
-                                          )
-                                        );
-                                        let idKey = plusminus[indexFind].id;
-                                        const idKeyPicked = isPicked.indexOf(
+                                        const arrCopy = [...isPicked];
+                                        let indexfound = arrCopy.indexOf(
                                           isPicked.find(
-                                            (element) => element.key === idKey
+                                            (element) =>
+                                              element.key === elemBis.id
                                           )
                                         );
-
-                                        let NewPicked = [...isPicked];
-                                        NewPicked[idKeyPicked].number += 1;
-                                        setIsPicked(NewPicked);
-
+                                        arrCopy[indexfound].number += 1;
+                                        setIsPicked(arrCopy);
                                         {
                                           /*------------------------------------------------------------------------------------------------------------------------
   -----------------------------------------------------------------------------------------------------------------
@@ -141,13 +132,6 @@ function App() {
   ---------------------------------------------------------------------------------------------------------------------*/
                                         }
                                       } else {
-                                        const Count = [...plusminus];
-                                        Count.push({
-                                          id: elemBis.id,
-                                          number: 1,
-                                        });
-                                        setPlusminus(Count);
-
                                         const MealsArr = [...isPicked];
                                         MealsArr.push({
                                           key: elemBis.id,
@@ -329,28 +313,22 @@ function App() {
   -------------------------Calcul du total (à corriger). Si prix > 50€, frais de livraison offerts-------------------------------------
   -------------------------------------------------------------------------------------------------------------------------
   -----------------------------------------------------------------------------------------------------------------*/}
-                    {total1 > 50 && setFees(false)}
-                    <div className="sub-tot"></div>
-                    {fees === false ? (
-                      <div className="deliverfee">
-                        <p>Sous-total</p> <p>{total1.toFixed(2)} €</p>
-                        <p>Frais de livraison</p>
-                        <p>Offerts</p>
-                      </div>
-                    ) : (
-                      isPicked.length !== 0 && (
-                        <>
-                          <section className="calcul">
-                            <div className="deliverfee">
-                              <p>Sous-total</p> <p>{total1.toFixed(2)} €</p>
-                            </div>
+
+                    {isPicked.length !== 0 && (
+                      <>
+                        <section className="calcul">
+                          <div className="deliverfee">
+                            <p>Sous-total</p>
+                            <p>{total1.toFixed(2)} €</p>
+                          </div>
+                          {total1 < 50 && (
                             <div className="deliverfee">
                               <p>Frais de livraison</p>
                               <p>{(2.5).toFixed(2) + " €"}</p>
                             </div>
-                          </section>
-                        </>
-                      )
+                          )}
+                        </section>
+                      </>
                     )}
 
                     {/*--------------------------------------------------------------------------------------------------
@@ -363,11 +341,8 @@ function App() {
                         <>
                           <div className="deliverfee">
                             <p>Total</p>
-                            {fees === true ? (
-                              <p>{(total1 + 2.5).toFixed(2) + " €"}</p>
-                            ) : (
-                              <p>{(total1 + 2.5).toFixed(2) + " €"}</p>
-                            )}
+
+                            <p>{total1.toFixed(2) + " €"}</p>
                           </div>
                         </>
                       </section>
